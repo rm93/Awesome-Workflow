@@ -5,3 +5,12 @@ rule open_file:
 		"processing/gene_ids.txt"
 	script:
 		"scripts/open.py"
+
+
+rule good_name:
+	input:
+		"processing/gene_ids.txt"
+	output:
+		"processing/ncbi/"
+	script:
+		"scripts/name.py"
