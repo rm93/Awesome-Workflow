@@ -1,5 +1,6 @@
 # Imports
 import os
+from tqdm import tqdm
 
 # Necessary for executing all the steps in the workflow
 rule all:
@@ -23,7 +24,9 @@ rule convert_identifiers:
 		"processing/ncbi/uniprot_ids.txt"
 	run:
 		with open(input[0], "r") as input_file:
-			for identifier in input_file:
+			for identifier in tqdm(input_file):
+				# Remove whitespace
+				identifier = "".join(identifier.split())
 				os.system("""
 				esearch -db gene -query \"{0}\" |
 				efetch -format xml |
@@ -31,6 +34,22 @@ rule convert_identifiers:
 				grep -m 1 \"UniProtKB\" |
 				cut -f 2 >> \"{1}\"
 				""".format(identifier, output[0]))
+
+# Using wget to use KEGG RESTful API to get DNA sequences
+rule retrieve_dna_sequences:
+	input:
+		"processing/gene_ids.txt"
+	output:
+		"output/sequences/kegg/"
+	run:
+		with open(input[0], "r") as input_file:
+			for identifier in tqdm(input_file):
+				# Remove whitespace
+				identifier = "".join(identifier.split())
+				output_filename = output[0]+identifier+".fasta"
+				os.system("""
+				wget -O \"{1}\" \"http://rest.kegg.jp/get/lpl:{0}/ntseq\"
+				""".format(identifier, output_filename))
 
 # Create report
 rule create_report:
