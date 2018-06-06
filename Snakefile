@@ -51,6 +51,15 @@ rule retrieve_dna_sequences:
 				wget -O \"{1}\" \"http://rest.kegg.jp/get/lpl:{0}/ntseq\"
 				""".format(identifier, output_filename))
 
+# Using R to calculate the GC-pecentage in sequences
+rule calculate_gc_percentage:
+	input:
+		"output/sequences/kegg/"
+	output:
+		"output/sequences/"
+	script:
+		"scripts/GCperc.R"
+
 # Create report
 rule create_report:
 	input:
