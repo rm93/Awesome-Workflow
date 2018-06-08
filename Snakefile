@@ -5,7 +5,14 @@ from tqdm import tqdm
 # Necessary for executing all the steps in the workflow
 rule all:
 	input:
-		"processing/gene_ids.txt", "processing/ncbi/uniprot_ids.txt", "processing/raw_kegg/", "output/sequences/", "output/pathways.txt", "output/", "output/uniprot_functions.txt", "processing/report.html"
+		"output/workflow.svg", "processing/gene_ids.txt", "processing/ncbi/uniprot_ids.txt", "processing/raw_kegg/", "output/sequences/", "output/pathways.txt", "output/", "output/uniprot_functions.txt", "processing/report.html"
+
+# Create workflow using shell commands and Graphviz library
+rule create_workflow:
+	output:
+		"output/workflow.svg"
+	shell:
+		"snakemake -np --dag | dot -Tsvg > {output}"
 
 # Using Python as tool
 rule parse_input:
