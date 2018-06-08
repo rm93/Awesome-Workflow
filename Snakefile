@@ -6,7 +6,7 @@ from tqdm import tqdm
 # Necessary for executing all the steps in the workflow
 rule all:
 	input:
-		"output/workflow.svg", "processing/gene_ids.txt", "processing/ncbi/uniprot_ids.txt", "processing/raw_kegg/", "output/sequences/", "output/pathways.txt", "output/", "output/uniprot_functions.txt", "processing/report.html"
+		"output/workflow.svg", "processing/gene_ids.txt", "processing/ncbi/uniprot_ids.txt", "processing/raw_kegg/", "output/sequences/", "output/pathways.txt", "output/", "output/uniprot_functions.txt"
 
 # Create workflow using shell commands and Graphviz library
 rule create_workflow:
@@ -85,12 +85,3 @@ rule get_uniprot_functions:
 		"output/uniprot_functions.txt"
 	script:
 		"scripts/get_uniprot_functions.py"
-
-# Create report
-rule create_report:
-	input:
-		"processing/ncbi/uniprot_ids.txt"
-	output:
-		"processing/report.html"
-	shell:
-		"touch {output}"

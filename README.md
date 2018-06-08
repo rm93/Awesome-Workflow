@@ -2,14 +2,14 @@
 
 **Licence: GNU General Public License v3.0 (copy provided in directory)**<br />
 <br />
-**Authors**: 
+**Authors**:
 - Alex Staritsky
 - Rick Medemblik
 
 **Contact**:
 - alexstaritsky@hotmail.nl
 - rmedemblik93@gmail.com
-         
+
 ### Description
 
 Automated workflow for analyzing data from <i>Lactobacillus plantarum</i> written in Snakemake and working in a Docker container.
@@ -27,6 +27,7 @@ Automated workflow for analyzing data from <i>Lactobacillus plantarum</i> writte
 - Tqdm 4.19.8
 - Docker version 17.12.1-ce, build 7390fc6
 - Anaconda 4.4.10
+- NCBI E-utilities 6.10
 - Snakemake 5.1.4
 - Biopython 1.71
 - R version 3.3.3 (2017-03-06) -- "Another Canoe"
@@ -38,9 +39,11 @@ Automated workflow for analyzing data from <i>Lactobacillus plantarum</i> writte
 
 To download the project files via the terminal use the following command: `git clone "https://github.com/rm93/Awesome-Workflow.git"`
 
-To create the docker container and conda envrionment and the needed installs follow the following steps.
+To download our docker environment use the docker image on: https://hub.docker.com/r/alexstaritsky/snakemake/
 
-#### Docker
+To manually create the docker container and conda envrionment and the needed installs follow the following steps.
+
+#### (Manual) Creation of the Docker image
 
 - Install Docker<br>
 `sudo apt update`<br>
@@ -101,9 +104,9 @@ To create the docker container and conda envrionment and the needed installs fol
 `biocLite("Biostrings")`<br>
 `biocLite("HELP")`<br>
 
-##### Unlock the working dir<br>
-`snakemake --unlock`<br>
-            
+##### Graphviz
+`conda install -c anaconda graphviz`
+
 ### Usage
 
 To start the script you use the terminal.
@@ -112,6 +115,14 @@ To start the script you use the terminal.
 - Make sure all requirements are installed on your computer or in a virtual environment
 - Go to the folder where the snakefile is.
 - And run the script with the command: `snakemake`
+
+### Alternative usage using Docker
+- Get the docker image using pull from https://hub.docker.com/r/alexstaritsky/snakemake/
+- Run the image so that it creates a container with the right environment and dependencies
+- If necessary, get to the terminal of the container by `docker attach <container_name/id>`
+- Activate the right Conda environment by `source activate snakemake`
+- Go to `/Awesome-Workflow` or if it doesn't exist clone it from our GitHub into the container and navigate to it
+- Execute the workflow using `snakemake`
 
 ### Output
 
