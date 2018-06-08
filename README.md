@@ -105,6 +105,7 @@ To manually create the docker container and conda envrionment and the needed ins
 `biocLite("HELP")`<br>
 
 ##### Graphviz
+- Install Graphviz<br>
 `conda install -c anaconda graphviz`
 
 ### Usage
