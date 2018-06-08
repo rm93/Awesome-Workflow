@@ -1,5 +1,6 @@
 # Imports
 import os
+# TQDM is used for measuring progress throughout the program (in iterations)
 from tqdm import tqdm
 
 # Necessary for executing all the steps in the workflow
