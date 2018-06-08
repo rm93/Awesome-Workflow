@@ -5,7 +5,7 @@ from tqdm import tqdm
 # Necessary for executing all the steps in the workflow
 rule all:
 	input:
-		"processing/report.html"
+		"processing/gene_ids.txt", "processing/ncbi/uniprot_ids.txt", "processing/raw_kegg/", "output/sequences/", "output/pathways.txt", "output/", "output/uniprot_functions.txt", "processing/report.html"
 
 # Using Python as tool
 rule parse_input:
@@ -36,11 +36,11 @@ rule convert_identifiers:
 				""".format(identifier, output[0]))
 
 # Using wget to use KEGG RESTful API to get DNA sequences
-rule retrieve_dna_sequences:
+rule retrieve_kegg_data:
 	input:
 		"processing/gene_ids.txt"
 	output:
-		"output/sequences/kegg/"
+		"processing/raw_kegg/"
 	run:
 		with open(input[0], "r") as input_file:
 			for identifier in tqdm(input_file):
@@ -48,17 +48,35 @@ rule retrieve_dna_sequences:
 				identifier = "".join(identifier.split())
 				output_filename = output[0]+identifier+".fasta"
 				os.system("""
-				wget -O \"{1}\" \"http://rest.kegg.jp/get/lpl:{0}/ntseq\"
+				wget -O \"{1}\" \"http://rest.kegg.jp/get/lpl:{0}"
 				""".format(identifier, output_filename))
+
+# Parse KEGG outputs using Python
+rule parse_kegg_output:
+	input:
+		"processing/raw_kegg/"
+	output:
+		"output/sequences/", "output/pathways.txt"
+	script:
+		"scripts/parse_kegg.py"
 
 # Using R to calculate the GC-pecentage in sequences
 rule calculate_gc_percentage:
 	input:
-		"output/sequences/kegg/"
-	output:
 		"output/sequences/"
+	output:
+		"output/"
 	script:
 		"scripts/GCperc.R"
+
+# Using Biopython to retrieve and parse UniProt function data
+rule get_uniprot_functions:
+	input:
+		"processing/ncbi/uniprot_ids.txt"
+	output:
+		"output/uniprot_functions.txt"
+	script:
+		"scripts/get_uniprot_functions.py"
 
 # Create report
 rule create_report:

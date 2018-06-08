@@ -1,0 +1,41 @@
+ENTRY       lp_0027           CDS       T00115
+NAME        pgmB1
+DEFINITION  (RefSeq) beta-phosphoglucomutase
+ORTHOLOGY   K01838  beta-phosphoglucomutase [EC:5.4.2.6]
+ORGANISM    lpl  Lactobacillus plantarum WCFS1
+PATHWAY     lpl00500  Starch and sucrose metabolism
+BRITE       KEGG Orthology (KO) [BR:lpl00001]
+             Metabolism
+              Carbohydrate metabolism
+               00500 Starch and sucrose metabolism
+                lp_0027 (pgmB1)
+            Enzymes [BR:lpl01000]
+             5. Isomerases
+              5.4  Intramolecular transferases
+               5.4.2  Phosphotransferases (phosphomutases)
+                5.4.2.6  beta-phosphoglucomutase
+                 lp_0027 (pgmB1)
+POSITION    complement(32236..32907)
+MOTIF       Pfam: HAD_2 Hydrolase HAD Vip3A_N
+DBLINKS     NCBI-GeneID: 1061253
+            NCBI-ProteinID: YP_004888117
+            UniProt: F9US56
+AASEQ       223
+            MVKFAAIKGFVFDLDGVITDTSTFHSQAWHQIADKVGVSWNDQLADALKGISRMDSLNLI
+            LAQGHRENDFTPAQKQALATEKNTNYLQLVNQMTPANILPGITAFLTELTTAGYALSLAS
+            ASKNAPLVLRKLGLSDYFTKAVDPASLKHGKPDPEIFRRGAEILGLNPADCIGVEDAAAG
+            VQSIKGAGETAIGIGDPTVLAAADINFTDTTQLTLANIKAQLN
+NTSEQ       672
+            atggttaaatttgcagcaatcaaggggtttgtctttgacctcgatggcgttatcacggac
+            acatctacttttcatagccaagcttggcaccagatcgccgataaagtcggggtcagttgg
+            aatgatcaattagctgacgcgctcaaaggtatcagtcggatggattcactcaacctcatt
+            ctagctcaagggcaccgagaaaatgacttcacaccggcccaaaaacaagcgctagctacg
+            gaaaagaacaccaattatttgcagctcgttaaccaaatgaccccagccaacattctacca
+            ggcatcaccgcctttttgactgaattaacaacggctggctacgcattgtcactcgcttca
+            gcatcaaaaaatgctccgcttgtgctacgtaaactcggtcttagtgactactttacgaag
+            gccgtcgaccccgctagtctcaaacacggtaaacctgatcccgagatttttcggcgcggt
+            gctgagattttaggccttaatccagctgactgtattggtgtcgaggacgcggcggctggc
+            gtacaatcgatcaaaggcgctggcgaaactgccatcggtattggtgacccgaccgtttta
+            gcggcggcagatatcaattttaccgatacgactcagctcacactcgccaatattaaggca
+            caactaaactaa
+///
