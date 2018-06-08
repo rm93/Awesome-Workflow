@@ -31,6 +31,8 @@ Automated workflow for analyzing data from <i>Lactobacillus plantarum</i> writte
 - Biopython 1.71
 - R version 3.3.3 (2017-03-06) -- "Another Canoe"
 - Graphviz version 2.40.1 (20161225.0304)
+- Biostrings 2.42.1
+- HELP 1.32.0
 
 ### Preparations
 
@@ -94,7 +96,6 @@ To create the docker container and conda envrionment and the needed installs fol
 `apt -y install r-base`<br>
 
 - In R (R-packages)<br>
-`install.packages("rstudioapi")`<br>
 `source("https://bioconductor.org/biocLite.R")`<br>
 `biocLite()`<br>
 `biocLite("Biostrings")`<br>
