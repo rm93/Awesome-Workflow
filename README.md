@@ -127,4 +127,4 @@ To start the script you use the terminal.
 
 ### Output
 
-After running the script several folders are created. The output map is the most interesting because here the report.html is stored.
+After running the script several folders are created. The output map is the most interesting because it contains all of the results of the workflow.
